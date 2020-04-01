@@ -1,0 +1,19 @@
+---
+- name: Install prometheus nginx exporter
+  become: True
+  apt:
+    name: prometheus-nginx-exporter
+
+- name: Configure prometheus-nginx-exporter
+  become: True
+  template:
+    src: prometheus-nginx-exporter.j2
+    dest: /etc/default/prometheus-nginx-exporter
+  notify: restart prometheus-nginx-exporter
+
+- name: Configure haproxy
+  become: True
+  template:
+    src: haproxy.conf.j2
+    dest: /etc/haproxy/conf.d/51-prometheus-nginx-exporter.conf
+  notify: restart haproxy

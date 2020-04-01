@@ -1,0 +1,14 @@
+---
+- name: restart prometheus-nginx-exporter
+  become: True
+  systemd:
+    name: prometheus-nginx-exporter
+    state: restarted
+    enabled: yes
+
+- name: restart haproxy
+  become: True
+  systemd:
+    name: haproxy
+    state: restarted
+    enabled: yes
