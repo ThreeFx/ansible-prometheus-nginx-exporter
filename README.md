@@ -3,6 +3,15 @@ prometheus-nginx-exporter
 
 Install and configure prometheus-nginx-exporter, including TLS authentication.
 
+Note for users
+--------------
+
+The default timeout setting for the prometheus-nginx-exporter are terrible and
+cause the systemd unit to fail on almost every reboot. Of course, in Debian
+buster this timeout is also **NOT** configurable (_sigh_). I recommend you
+install a newer version (e.g. from Debian testing). Since version 0.3.0 (or
+0.4.0) the exporter will automatically reconnect.
+
 Requirements
 ------------
 
